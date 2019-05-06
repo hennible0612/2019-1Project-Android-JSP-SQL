@@ -88,23 +88,21 @@
 					BbsDAO bbsDAO = new BbsDAO();
 					ArrayList<Bbs> list = bbsDAO.getList(pageNumber);
 					for(int i=0; i< list.size(); i++){
-						%>
-							<td><%=list.get(i).getBbsID() %></td>
-							<td><a href="view.jsp?bbsID=<%= list.get(i).getBbsID() %>"><%= list.get(i).getBbsTitle() %></a></td>
-							<td><%= list.get(i).getUserID() %></td>
-							<td><%= list.get(i).getBbsDate() %></td>
-						
-						<%
+				%>
+				<tr>
+					<td><%=list.get(i).getBbsID() %></td>
+					<td><a href="view.jsp?bbsID=<%= list.get(i).getBbsID() %>"><%= list.get(i).getBbsTitle() %></a></td>
+					<td><%= list.get(i).getUserID() %></td>
+					<td><%= list.get(i).getBbsDate() %></td>
+				</tr>
+				<%
 					}
 				%>
-					<tr>
-						
-					</tr>
+
 				</tbody>
 			</table>
 			<a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
 		</div>
-	
 	</div>
 	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

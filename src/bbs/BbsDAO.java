@@ -93,8 +93,23 @@ public class BbsDAO {
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-
 		}
 		return list;
+	}
+	
+	public boolean nextPage(int pageNumber) { //페이지 처리를 위한 함수
+		String SQL = "SELECT * FROM BBS WHERE bbsID < ? AND bbsAvailable = 1 ORDER BY bbsID DESC LIMIT 10";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1,  getNext() - (pageNumber-1) * 10);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				return true;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+		
 	}
 }
